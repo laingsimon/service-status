@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.ServiceProcess;
 
 namespace ServiceStatus
 {
@@ -6,15 +8,14 @@ namespace ServiceStatus
     {
         public static void Main(string[] args)
         {
-            var host = new WebHost(new[]
+            if (Debugger.IsAttached)
             {
-                "http://localhost:2016/"
-            });
+                new WindowsService().Start(args);
 
-            host.Start();
-            Console.WriteLine("Listening...");
-            Console.ReadKey();
-            host.Dispose();
+                Console.ReadKey();
+            }
+            else
+                ServiceBase.Run(new WindowsService());
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.Owin.Hosting;
 using System;
+using System.Linq;
+using System.Net;
 
 namespace ServiceStatus
 {
@@ -10,7 +12,7 @@ namespace ServiceStatus
 
         public WebHost(string[] urls)
         {
-            _urls = urls;
+            _urls = urls.Select(url => url.Replace("%COMPUTERNAME%", Dns.GetHostName())).ToArray();
         }
 
         public void Start()
