@@ -5,6 +5,8 @@ using System.Net;
 
 namespace ServiceStatus
 {
+    using System.Text.RegularExpressions;
+
     internal class WebHost : IDisposable
     {
         private readonly string[] _urls;
@@ -12,7 +14,7 @@ namespace ServiceStatus
 
         public WebHost(string[] urls)
         {
-            _urls = urls.Select(url => url.Replace("%COMPUTERNAME%", Dns.GetHostName())).ToArray();
+            _urls = urls.Select(url => Regex.Replace(url, @"%COMPUTERNAME%", Dns.GetHostName(), RegexOptions.IgnoreCase)).ToArray();
         }
 
         public void Start()
