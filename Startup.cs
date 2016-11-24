@@ -18,7 +18,7 @@ namespace ServiceStatus
                 routeTemplate: "{controller}/{id}",
                 defaults: new
                 {
-                    action = "Status"
+                    action = "Index"
                 }
             );
 

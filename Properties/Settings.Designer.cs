@@ -35,5 +35,15 @@ namespace ServiceStatus.Properties {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Urls"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=Moose;User Id=MooseApplication;Password=TorrentialF" +
+            "ire")]
+        public string ConnectionString {
+            get {
+                return ((string)(this["ConnectionString"]));
+            }
+        }
     }
 }

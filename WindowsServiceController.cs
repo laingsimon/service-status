@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace ServiceStatus
 {
@@ -9,15 +8,12 @@ namespace ServiceStatus
 
         public WindowsServiceController()
         {
-            Console.WriteLine("Controller created");
             _repository = new ServiceRepository();
         }
 
         [HttpGet]
-        public Service Status(string id)
+        public Service Index(string id)
         {
-            Console.WriteLine("Action called: " + id);
-
             return _repository.GetStatus(id);
         }
     }

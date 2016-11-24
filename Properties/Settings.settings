@@ -9,5 +9,8 @@
   &lt;string&gt;http://%computername%:2016&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
+    <Setting Name="ConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=.;Integrated Security=SSPI;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
