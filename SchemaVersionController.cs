@@ -1,7 +1,9 @@
 ﻿namespace ServiceStatus
 {
+    using System;
     using System.Web.Http;
     using Properties;
+    using System.Diagnostics;
 
     public class SchemaVersionController : ApiController
     {
@@ -21,7 +23,24 @@
             if (!SchemaVersionRepository.IsValidDatabaseName(id))
                 return null;
 
-            return repository.GetVersion(id);
+            try
+            {
+                return repository.GetVersion(id);
+            }
+            catch (Exception exc)
+            {
+                ThrowIfLocalRequest(exc);
+                return null;
+            }
+        }
+
+        [Conditional("DEBUG")]
+        private void ThrowIfLocalRequest(Exception exc)
+        {
+            if (Request.RequestUri.IsLoopback)
+                return;
+
+            throw exc;
         }
     }
 }
