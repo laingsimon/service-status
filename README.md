@@ -24,7 +24,7 @@ Will return an object such as:
 }
 ```
 
-The status value is a name from the ServiceRunningStatus enum in the .net framework.
+The status value is a name from the [ServiceControllerStatus](https://msdn.microsoft.com/en-us/library/system.serviceprocess.servicecontrollerstatus.aspx) enum in the .net framework.
 
 **NOTE** This service exposes the possibility of enumerating services installed on a server; although it does not permit control of them, it might expose possible vulnurabilities on the machine. Ensure that firewalls, or other tools, are employed to ensure only legitate sources can query the service.
 
