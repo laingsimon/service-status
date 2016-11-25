@@ -18,6 +18,9 @@
             if (string.IsNullOrEmpty(id))
                 return null;
 
+            if (!SchemaVersionRepository.IsValidDatabaseName(id))
+                return null;
+
             return repository.GetVersion(id);
         }
     }
